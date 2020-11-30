@@ -4,59 +4,58 @@
 ## foreign_key; true 外部キーの設定（別テーブルのカラム参照）
 
  Usersテーブル
-| Column                | Type        | Options                     |
+| Column      | Type        | Options                   |
 -----------------------------------------------------
-| nickname              | string      | null: false                 |
-| email                 | string      | null: false, unique: true   |
-| encrypted_password    | string      | null: false                 |
-| first_name            | string      | null: false                 |
-| last_name             | string      | null: false                 |
-| first_name_kana       | string      | null: false                 |
-| last_name_kana        | string      | null: false                 |
-| birthday              | date        | null: false                 |
+| nickname    | string      | null: false               |
+| email       | string        | null: false, unique: true |
+| password    | string      | null: false               |
+| first_name  | string      | null: false               |
+| last_name   | string      | null: false               |
+| birthday    | integer     | null: false               |
 
  Association
 has_many :items
 has_many :purchases
+has_one :address
 
  Itemsテーブル
-| Column        | Type        | Options                                   |
+| Column        | Type        | Options                   |
 -----------------------------------------------------
-| user                     | string      | null: false, foreign_key: true |
-| name                     | string      | null: false                    |
-| explanation              | text        | null: false                    |
-| price                    | integer     | null: false                    |
-| category_address_id      | integer     | null: false                    |
-| status_address_id        | integer     | null: false                    |
-| delivery_fee_address_id  | integer     | null: false                    |
-| from_area_address_id     | integer     | null: false                    |
-| delivery_days_address_id | integer     | null: false                    |
+| name          | string      | null: false               |
+| image         | string      | null: false               |
+| explanation   | text        | null: false               |
+| price         | integer     | null: false               |
+| category      | string      | null: false               |
+| status        | string      | null: false               |
+| delivery_fee  | integer     | null: false               |
+| from_area     | string      | null: false               |
+| delivery_days | integer     | null: false               |
 
  Association
 belongs_to :user
+has_many :addresses
 has_one :purchase
 
  Purchasesテーブル
-| Column      | Type        | Options                        |
+| Column      | Type        | Options                   |
 -----------------------------------------------------
-| user        | string      | null: false, foreign_key: true |
-| item        | string      | null: false, foreign_key: true |
+| user_name   | string      | null: false               |
+| when        | string      | null: false               |
+| item_name   | string      | null: false               |
 
  Association
 belongs_to :user
-belongs_to :item
-has_one :address
+has_one :item
 
  Addressesテーブル
-| Column                | Type         | Options               |
+| Column      | Type        | Options                   |
 -----------------------------------------------------
-| purchase              | string      | null: false, foreign_key: true |
-| prefecture_address_id | integer     | null: false                    |
-| post_number           | string      | null: false                    |
-| municipalities        | string      | null: false                    |
-| address_number        | string      | null: false                    |
-| building_name         | string      |                                |
-| phone_number          | string      | null: false                    |
+| prefecture     | string      | null: false            |
+| post_number    | string      | null: false            |
+| municipalities | string      | null: false            |
+| building_name  | string      |                        |
+| phone_number   | integer     | null: false            |
 
  Association
-belongs_to :purchase
+belongs_to :item
+has_one :user
