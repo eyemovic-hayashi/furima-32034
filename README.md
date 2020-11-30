@@ -1,62 +1,24 @@
-## 下記オプション一覧
-## null: false カラムが殻の状態では保存できない
-## unique: true 一意性のみ許可（同じ値は保存できない）
-## foreign_key; true 外部キーの設定（別テーブルのカラム参照）
+# README
 
- Usersテーブル
-| Column                | Type        | Options                     |
------------------------------------------------------
-| nickname              | string      | null: false                 |
-| email                 | string      | null: false, unique: true   |
-| encrypted_password    | string      | null: false                 |
-| first_name            | string      | null: false                 |
-| last_name             | string      | null: false                 |
-| first_name_kana       | string      | null: false                 |
-| last_name_kana        | string      | null: false                 |
-| birthday              | date        | null: false                 |
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
- Association
-has_many :items
-has_many :purchases
+Things you may want to cover:
 
- Itemsテーブル
-| Column        | Type        | Options                                   |
------------------------------------------------------
-| user                     | string      | null: false, foreign_key: true |
-| name                     | string      | null: false                    |
-| explanation              | text        | null: false                    |
-| price                    | integer     | null: false                    |
-| category_address_id      | integer     | null: false                    |
-| status_address_id        | integer     | null: false                    |
-| delivery_fee_address_id  | integer     | null: false                    |
-| from_area_address_id     | integer     | null: false                    |
-| delivery_days_address_id | integer     | null: false                    |
+* Ruby version
 
- Association
-belongs_to :user
-has_one :purchase
+* System dependencies
 
- Purchasesテーブル
-| Column      | Type        | Options                        |
------------------------------------------------------
-| user        | string      | null: false, foreign_key: true |
-| item        | string      | null: false, foreign_key: true |
+* Configuration
 
- Association
-belongs_to :user
-belongs_to :item
-has_one :address
+* Database creation
 
- Addressesテーブル
-| Column                | Type         | Options               |
------------------------------------------------------
-| purchase              | string      | null: false, foreign_key: true |
-| prefecture_address_id | integer     | null: false                    |
-| post_number           | string      | null: false                    |
-| municipalities        | string      | null: false                    |
-| address_number        | string      | null: false                    |
-| building_name         | string      |                                |
-| phone_number          | string      | null: false                    |
+* Database initialization
 
- Association
-belongs_to :purchase
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
