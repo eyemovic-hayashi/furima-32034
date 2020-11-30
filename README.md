@@ -22,7 +22,7 @@ has_many :purchases
  Itemsテーブル
 | Column        | Type        | Options                                   |
 -----------------------------------------------------
-| user                     | string      | null: false, foreign_key: true |
+| user                     | references  | null: false, foreign_key: true |
 | name                     | string      | null: false                    |
 | explanation              | text        | null: false                    |
 | price                    | integer     | null: false                    |
@@ -39,8 +39,8 @@ has_one :purchase
  Purchasesテーブル
 | Column      | Type        | Options                        |
 -----------------------------------------------------
-| user        | string      | null: false, foreign_key: true |
-| item        | string      | null: false, foreign_key: true |
+| user        | references  | null: false, foreign_key: true |
+| item        | references  | null: false, foreign_key: true |
 
  Association
 belongs_to :user
@@ -50,7 +50,7 @@ has_one :address
  Addressesテーブル
 | Column                | Type         | Options               |
 -----------------------------------------------------
-| purchase              | string      | null: false, foreign_key: true |
+| purchase              | references  | null: false, foreign_key: true |
 | prefecture_address_id | integer     | null: false                    |
 | post_number           | string      | null: false                    |
 | municipalities        | string      | null: false                    |
