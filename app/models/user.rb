@@ -6,15 +6,15 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :nickname
-    VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]+\z/
+    VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]+\z/.freeze
     validates :last_name, format: { with: VALID_NAME_REGEX }
     validates :first_name, format: { with: VALID_NAME_REGEX }
-    VALID_KANA_REGEX = /\A[ァ-ヶー－]+\z/
+    VALID_KANA_REGEX = /\A[ァ-ヶー－]+\z/.freeze
     validates :last_name_kana, format: { with: VALID_KANA_REGEX }
     validates :first_name_kana, format: { with: VALID_KANA_REGEX }
     validates :birthday
   end
 
-  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
-  validates :password, format:{ with: VALID_PASSWORD_REGEX}
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
+  validates :password, format: { with: VALID_PASSWORD_REGEX }
 end
