@@ -23,7 +23,7 @@ has_many :purchases
 | Column        | Type        | Options                                   |
 -----------------------------------------------------
 | user                     | references  | null: false, foreign_key: true |
-| name                     | string      | null: false                    |
+| item_name                | string      | null: false                    |
 | explanation              | text        | null: false                    |
 | price                    | integer     | null: false                    |
 | category_address_id      | integer     | null: false                    |
