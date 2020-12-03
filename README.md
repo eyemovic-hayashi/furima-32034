@@ -26,11 +26,11 @@ has_many :purchases
 | item_name                | string      | null: false                    |
 | explanation              | text        | null: false                    |
 | price                    | integer     | null: false                    |
-| category_address_id      | integer     | null: false                    |
-| status_address_id        | integer     | null: false                    |
-| delivery_fee_address_id  | integer     | null: false                    |
-| from_area_address_id     | integer     | null: false                    |
-| delivery_days_address_id | integer     | null: false                    |
+| category_id              | integer     | null: false                    |
+| status_id                | integer     | null: false                    |
+| delivery_fee_id          | integer     | null: false                    |
+| from_area_id             | integer     | null: false                    |
+| delivery_days_id         | integer     | null: false                    |
 
  Association
 belongs_to :user
@@ -51,7 +51,7 @@ has_one :address
 | Column                | Type         | Options               |
 -----------------------------------------------------
 | purchase              | references  | null: false, foreign_key: true |
-| prefecture_address_id | integer     | null: false                    |
+| prefecture_id         | integer     | null: false                    |
 | post_number           | string      | null: false                    |
 | municipalities        | string      | null: false                    |
 | address_number        | string      | null: false                    |
