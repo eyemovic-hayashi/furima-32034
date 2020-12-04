@@ -33,25 +33,52 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Category Select')
       end
+
+      it 'category_idが空だと商品出品に失敗する' do
+        @item.category_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category can't be blank")
+      end
+
       it 'status_idを選択していないと商品出品に失敗する' do
         @item.status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Status Select')
+      end
+      it 'status_idが空だと商品出品に失敗する' do
+        @item.status_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Status can't be blank")
       end
       it 'delivery_fee_idを選択していないと商品出品に失敗する' do
         @item.delivery_fee_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Delivery fee Select')
       end
+      it 'delivery_fee_idが空だと商品出品に失敗する' do
+        @item.delivery_fee_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Delivery fee can't be blank")
+      end
       it 'from_area_idを選択していないと商品出品に失敗する' do
         @item.from_area_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('From area Select')
       end
-      it 'period_idを選択していないと商品出品に失敗する' do
+      it 'from_area_idが空だと商品出品に失敗する' do
+        @item.from_area_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("From area can't be blank")
+      end
+      it 'delivery_day_idを選択していないと商品出品に失敗する' do
         @item.delivery_day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Delivery day Select')
+      end
+      it 'delivery_day_idが空だと商品出品に失敗する' do
+        @item.delivery_day_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Delivery day can't be blank")
       end
       it 'priceが空だと商品出品に失敗する' do
         @item.price = nil
