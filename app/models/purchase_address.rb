@@ -1,14 +1,16 @@
 class PurchaseAddress
   include ActiveModel::Model
-  attr_accessor :post_number, :from_area_id, :municipalities, :address_number, :building_name, :phone_number, :user_id, :item_id, :token
+  attr_accessor :post_number, :from_area_id, :municipalities, :address_number, :building_name, :phone_number, :user_id, :item_id
+  # , :token
 
   with_options presence: true do
     validates :post_number, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'Input correctly' }
     validates :from_area_id, numericality: { other_than: 1, message: 'Select' }
-    validates :munipalities
+    validates :municipalities
     validates :address_number
     validates :phone_number, format: { with: /\A\d{1,11}\z/, message: 'Input only number' }
-    validates :token
+   
+    # validates :token
   end
 
   def save
